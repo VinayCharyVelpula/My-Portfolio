@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vinay's Data Analyst Portfolio</title>
+  <title>Portfolio</title>
   <style>
     /* Reset and global styles */
     * {
@@ -15,42 +15,48 @@
 
     body {
       font-family: 'Arial', sans-serif;
-      background-color: #f9f9f9;
-      color: #333;
+      background: black;
+      background-size: 400% 400%;
+      animation: gradientAnimation 8s ease infinite;
+      color: black;
       line-height: 1.6;
       scroll-behavior: smooth;
     }
 
-    html,
-    body {
-      height: 100%;
+    @keyframes gradientAnimation {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
     }
 
-    section {
-      padding: 60px 20px;
-      margin: 20px 0;
-    }
-
-    /* Navigation Bar */
     nav {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      background-color: #333;
+      background-color: rgba(0, 0, 0, 0.7);
       color: white;
       z-index: 100;
+      transition: background-color 0.3s;
     }
 
     nav ul {
       display: flex;
       justify-content: center;
-      padding: 15px;
+      padding: 20px;
       list-style: none;
     }
 
     nav ul li {
-      margin: 0 20px;
+      margin: 0 25px;
     }
 
     nav ul li a {
@@ -58,105 +64,117 @@
       text-decoration: none;
       font-size: 18px;
       padding: 10px 20px;
-      display: inline-block;
-      transition: background-color 0.3s ease;
+      transition: all 0.3s ease;
     }
 
     nav ul li a:hover {
-      background-color: #555;
+      background-color: #ff007f;
       border-radius: 5px;
+      transform: scale(1.1);
     }
 
-    /* Profile Section */
+    .social-icons {
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .social-icons img {
+      width: 40px;
+      cursor: pointer;
+      opacity: 0.8;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .social-icons img:hover {
+      opacity: 1;
+      transform: scale(1.1);
+    }
+
+    section {
+      padding: 100px 20px;
+      margin: 20px 0;
+      position: relative;
+    }
+
     #profile {
-      background: linear-gradient(90deg, rgba(255, 152, 0, 0.8), rgba(0, 128, 128, 0.8));
-      color: white;
+      background: rgba(0, 0, 0, 0.7);
       text-align: center;
       padding: 100px 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
 
     #profile h1 {
-      font-size: 3em;
+      font-size: 3.5em;
       margin-bottom: 20px;
+      text-transform: uppercase;
+      color: #ff007f;
     }
 
     #profile p {
-      font-size: 1.2em;
-      line-height: 1.6;
+      font-size: 1.3em;
+      line-height: 1.8;
+      color: #f1f1f1;
     }
 
-    /* Resume Button */
-    .resume-btn {
-      display: inline-block;
-      background-color: #ff5722;
-      color: white;
-      padding: 12px 30px;
-      text-decoration: none;
-      border-radius: 5px;
-      margin-top: 20px;
-      font-size: 18px;
-      transition: background-color 0.3s ease;
+    #resume-container {
+      margin-top: 30px;
+      background-color: #222;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
 
-    .resume-btn:hover {
-      background-color: #e64a19;
+    #resume-container iframe {
+      width: 100%;
+      height: 600px;
+      border: none;
     }
 
-    /* Skills Section */
-    #skills {
-      background-color: #fff;
-      padding: 40px 20px;
-    }
-
-    .skill-card {
+    .skill-card,
+    .cert-card {
       margin: 20px;
       display: inline-block;
       width: 150px;
       padding: 20px;
-      background: #e0e0e0;
+      background: #333;
       border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       text-align: center;
-      transition: transform 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    .skill-card:hover {
+    .skill-card:hover,
+    .cert-card:hover {
       transform: scale(1.1);
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
     }
 
-    .skill-card img {
-      width: 60px;
-      height: 60px;
-      margin-bottom: 10px;
-    }
-
-    .skill-card p {
-      font-size: 1.1em;
-      font-weight: bold;
-    }
-
-    /* Projects Section */
-    #projects {
-      background-color: #f0f0f0;
-      padding: 40px 20px;
-      text-align: center;
+    .skill-card img,
+    .cert-card img {
+      width: 100px;
+      height: 100px;
+      margin-bottom: 20px;
     }
 
     .project-card {
       display: inline-block;
       width: 300px;
       margin: 20px;
-      background: #fff;
+      background: #222;
       padding: 20px;
       border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .project-card:hover {
       transform: scale(1.05);
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
     }
 
     .project-card img {
@@ -165,47 +183,6 @@
       border-radius: 8px;
     }
 
-    .project-card a {
-      display: block;
-      margin-top: 10px;
-      text-decoration: none;
-      color: #333;
-      font-weight: bold;
-      font-size: 1.2em;
-    }
-
-    /* Certifications Section */
-    #certifications {
-      background: #333;
-      color: white;
-      text-align: center;
-      padding: 40px 20px;
-    }
-
-    .cert-button img {
-      width: 150px;
-      height: 150px;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      cursor: pointer;
-      transition: transform 0.3s ease;
-    }
-
-    .cert-button img:hover {
-      transform: scale(1.1);
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-    }
-
-    .cert-link {
-      display: block;
-      margin-top: 10px;
-      color: #ff5722;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 1.2em;
-    }
-
-    /* Floating Social Media Icons */
     .floating-icons {
       position: fixed;
       top: 50%;
@@ -222,11 +199,34 @@
       margin: 15px;
       cursor: pointer;
       opacity: 0.8;
-      transition: opacity 0.3s ease;
+      transition: opacity 0.3s ease, transform 0.3s ease;
     }
 
     .floating-icons img:hover {
       opacity: 1;
+      transform: scale(1.2);
+    }
+
+    .floating-icons img:active {
+      transform: scale(1.1);
+    }
+
+    .floating-icons img + span {
+      font-size: 12px;
+      color: #fff;
+      text-align: center;
+      margin-top: 5px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .floating-icons img:hover + span {
+      opacity: 1;
+    }
+
+    .active {
+      background-color: #ff007f;
+      border-radius: 5px;
     }
   </style>
 </head>
@@ -234,21 +234,39 @@
 <body>
   <nav>
     <ul>
-      <li><a href="#profile">Profile</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#certifications">Certifications</a></li>
+      <li><a href="#profile" class="nav-link">Profile</a></li>
+      <li><a href="#skills" class="nav-link">Skills</a></li>
+      <li><a href="#projects" class="nav-link">Projects</a></li>
+      <li><a href="#certifications" class="nav-link">Certifications</a></li>
+      <li><a href="https://www.linkedin.com" target="_blank">LinkedIn</a></li>
+      <li><a href="https://github.com" target="_blank">GitHub</a></li>
     </ul>
   </nav>
 
-  <!-- Profile Section -->
   <section id="profile">
     <h1>Vinay - Data Analyst</h1>
-    <p>A passionate Data Analyst with experience in transforming raw data into actionable insights through statistical analysis, data visualization, and machine learning models. Adept at using tools like Excel, Python, Tableau, and Power BI to analyze large datasets and create compelling visualizations.</p>
-    <a href="your_resume.pdf" class="resume-btn" target="_blank" download>Download Resume</a>
+    <p>
+      As a Data Analyst, I have developed a strong skillset in data wrangling, visualization, and analytics tools. I am passionate about turning data into actionable insights and have worked on several projects involving data analysis, statistical modeling, and machine learning.
+    </p>
+
+    <!-- Resume displayed as PDF in profile section -->
+    <div id="resume-container">
+      <h2 style="color: #ff007f;">Resume</h2>
+      <iframe src="resume.pdf" title="Vinay's Resume"></iframe>
+    </div>
+
+    <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 20px;">
+      <div style="text-align: center;">
+        <canvas id="skillsChart" width="200" height="200"></canvas>
+        <p style="margin-top: 10px; font-size: 14px;">Skills Distribution</p>
+      </div>
+      <div style="text-align: center;">
+        <canvas id="experienceChart" width="200" height="200"></canvas>
+        <p style="margin-top: 10px; font-size: 14px;">Projects by Year</p>
+      </div>
+    </div>
   </section>
 
-  <!-- Skills Section -->
   <section id="skills">
     <h2>Skills</h2>
     <div class="skill-card">
@@ -260,55 +278,69 @@
       <p>Python</p>
     </div>
     <div class="skill-card">
-      <img src="pbi.jpg" alt="Tableau">
-      <p>Power BI</p>
+      <img src="tableau.jpg" alt="Tableau">
+      <p>Tableau</p>
     </div>
     <div class="skill-card">
-      <img src="jupyter.jpg" alt="SQL">
-      <p>Jupyter Notebook</p>
+      <img src="sql.jpg" alt="SQL">
+      <p>SQL</p>
     </div>
   </section>
 
-  <!-- Projects Section -->
   <section id="projects">
     <h2>Projects</h2>
     <div class="project-card">
-      <img src="https://via.placeholder.com/250" alt="Sales Data Project">
-      <h3>Sales Data Analysis</h3>
-      <a href="#">View Project</a>
+      <img src="project1.jpg" alt="Project 1">
+      <p>Data Analysis of Sales Data</p>
     </div>
     <div class="project-card">
-      <img src="https://via.placeholder.com/250" alt="Customer Segmentation">
-      <h3>Customer Segmentation</h3>
-      <a href="#">View Project</a>
+      <img src="project2.jpg" alt="Project 2">
+      <p>Customer Segmentation with K-means</p>
     </div>
   </section>
 
-  <!-- Certifications Section -->
   <section id="certifications">
     <h2>Certifications</h2>
-    <div class="cert-button">
-      <img src="https://via.placeholder.com/150" alt="Google Data Analytics" onclick="verifyCertificate('Google Data Analytics')">
-      <a href="https://www.coursera.org/certificates/google-data-analytics" class="cert-link" target="_blank">Verify Certificate</a>
-    </div>
-    <div class="cert-button">
-      <img src="ibm.png" alt="IBM Data Science Professional Certificate" onclick="verifyCertificate('')">
-      <a href="https://aws.amazon.com/certification/certified-data-analytics-specialty/" class="cert-link" target="_blank">Verify Certificate</a>
+    <div class="cert-card">
+      <img src="cert1.jpg" alt="Cert 1">
+      <p>Google Data Analytics</p>
     </div>
   </section>
 
-  <!-- Floating Social Media Icons -->
-  <div class="floating-icons">
-    <img src="linkedin.jpg" alt="LinkedIn" onclick="window.location.href='https://www.linkedin.com/vinayvelpula'">
-    <img src="github.jpg" alt="GitHub" onclick="window.location.href='https://www.github.com/vinaycharyvelpula'">
-    <img src="kaggle.jpg" alt="Kaggle" onclick="window.location.href='https://www.kaggle.com/vinayvelpula'">
-    <img src="email.jpg" alt="Email" onclick="window.location.href='mailto:your-email@example.com'">
-  </div>
-
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
-    function verifyCertificate(certificate) {
-      alert("Verifying Certificate: " + certificate);
-    }
+    const skillsChart = document.getElementById('skillsChart').getContext('2d');
+    new Chart(skillsChart, {
+      type: 'pie',
+      data: {
+        labels: ['Python', 'Excel', 'Tableau', 'SQL'],
+        datasets: [{
+          data: [30, 25, 20, 25],
+          backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0'],
+        }]
+      }
+    });
+
+    const experienceChart = document.getElementById('experienceChart').getContext('2d');
+    new Chart(experienceChart, {
+      type: 'bar',
+      data: {
+        labels: ['2021', '2022', '2023'],
+        datasets: [{
+          label: 'Projects Completed',
+          data: [5, 8, 12],
+          backgroundColor: '#4BC0C0',
+        }]
+      }
+    });
+
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.forEach(nav => nav.classList.remove('active'));
+        link.classList.add('active');
+      });
+    });
   </script>
 </body>
 
