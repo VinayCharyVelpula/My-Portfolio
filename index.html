@@ -1,54 +1,178 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vinay : Portfolio</title>
-    <style>
-        body {
-            margin: 0;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio</title>
+  <style>
+    /* Reset styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        .container {
-            text-align: center;
-        }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #000;
+      color: #fff;
+      scroll-behavior: smooth;
+    }
 
-        .text {
-            font-size: 24px;
-            margin-bottom: 20px;
-            color: #333;
-        }
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      z-index: 1000;
+    }
 
-        .loader {
-            width: 40px;
-            height: 40px;
-            border: 5px solid #ccc;
-            border-top: 5px solid #007BFF;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
+    header nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
 
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-    </style>
+    header nav a:hover {
+      color: #00ff88;
+    }
+
+    section {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+      position: relative;
+    }
+
+    section:nth-child(odd) {
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      text-shadow: 0px 0px 10px rgba(0, 255, 136, 0.7);
+    }
+
+    p {
+      font-size: 1.2rem;
+      max-width: 600px;
+    }
+
+    .skills img,
+    .projects img,
+    .certifications img {
+      width: 150px;
+      margin: 10px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 255, 136, 0.5);
+      transition: transform 0.3s ease;
+    }
+
+    .skills img:hover,
+    .projects img:hover,
+    .certifications img:hover {
+      transform: scale(1.1);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.9);
+      position: relative;
+    }
+
+    footer p {
+      font-size: 0.9rem;
+    }
+
+    /* Scroll animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.6s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <div class="text">Updating Soon...
-Author : Vinay Chary Velpula</div>
-        <div class="loader"></div>
+  <header>
+    <div class="logo">My Portfolio</div>
+    <nav>
+      <a href="#profile">Profile</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#certifications">Certifications</a>
+    </nav>
+  </header>
+
+  <section id="profile" class="reveal">
+    <h1>Welcome to My Portfolio</h1>
+    <p>Hello! I'm passionate about creating innovative solutions and learning new technologies.</p>
+  </section>
+
+  <section id="skills" class="skills reveal">
+    <h1>My Skills</h1>
+    <div>
+      <img src="https://via.placeholder.com/150" alt="Skill 1">
+      <img src="https://via.placeholder.com/150" alt="Skill 2">
+      <img src="https://via.placeholder.com/150" alt="Skill 3">
     </div>
+  </section>
+
+  <section id="projects" class="projects reveal">
+    <h1>My Projects</h1>
+    <div>
+      <img src="https://via.placeholder.com/150" alt="Project 1">
+      <img src="https://via.placeholder.com/150" alt="Project 2">
+      <img src="https://via.placeholder.com/150" alt="Project 3">
+    </div>
+  </section>
+
+  <section id="certifications" class="certifications reveal">
+    <h1>My Certifications</h1>
+    <div>
+      <img src="https://via.placeholder.com/150" alt="Certification 1">
+      <img src="https://via.placeholder.com/150" alt="Certification 2">
+      <img src="https://via.placeholder.com/150" alt="Certification 3">
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 My Portfolio. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Scroll animation
+    const reveals = document.querySelectorAll('.reveal');
+
+    function revealSections() {
+      reveals.forEach((section) => {
+        const sectionTop = section.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        if (sectionTop < windowHeight - 100) {
+          section.classList.add('active');
+        } else {
+          section.classList.remove('active');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', revealSections);
+    revealSections(); // Trigger animation on page load
+  </script>
 </body>
 </html>
