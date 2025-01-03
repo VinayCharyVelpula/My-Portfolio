@@ -3,176 +3,39 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio</title>
+  <title>Vinay</title>
   <style>
-    /* Reset styles */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
+    /* Center the loading spinner in the middle of the screen */
     body {
-      font-family: Arial, sans-serif;
-      background-color: #000;
-      color: #fff;
-      scroll-behavior: smooth;
-    }
-
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background: rgba(0, 0, 0, 0.8);
-      padding: 15px 30px;
-      display: flex;
-      justify-content: space-between;
-      z-index: 1000;
-    }
-
-    header nav a {
-      color: #fff;
-      text-decoration: none;
-      margin: 0 15px;
-      font-weight: bold;
-      transition: color 0.3s ease;
-    }
-
-    header nav a:hover {
-      color: #00ff88;
-    }
-
-    section {
-      min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      text-align: center;
-      padding: 20px;
-      position: relative;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
     }
 
-    section:nth-child(odd) {
-      background: rgba(255, 255, 255, 0.05);
+    /* Create a simple spinner */
+    .spinner {
+      border: 4px solid #f3f3f3; /* Light gray background */
+      border-top: 4px solid #3498db; /* Blue color for the top */
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      animation: spin 1s linear infinite; /* Spin animation */
     }
 
-    h1 {
-      font-size: 3rem;
-      margin-bottom: 20px;
-      text-shadow: 0px 0px 10px rgba(0, 255, 136, 0.7);
-    }
-
-    p {
-      font-size: 1.2rem;
-      max-width: 600px;
-    }
-
-    .skills img,
-    .projects img,
-    .certifications img {
-      width: 150px;
-      margin: 10px;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0, 255, 136, 0.5);
-      transition: transform 0.3s ease;
-    }
-
-    .skills img:hover,
-    .projects img:hover,
-    .certifications img:hover {
-      transform: scale(1.1);
-    }
-
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: rgba(0, 0, 0, 0.9);
-      position: relative;
-    }
-
-    footer p {
-      font-size: 0.9rem;
-    }
-
-    /* Scroll animations */
-    .reveal {
-      opacity: 0;
-      transform: translateY(50px);
-      transition: all 0.6s ease;
-    }
-
-    .reveal.active {
-      opacity: 1;
-      transform: translateY(0);
+    /* Keyframes for the spinning animation */
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="logo">My Portfolio</div>
-    <nav>
-      <a href="#profile">Profile</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#certifications">Certifications</a>
-    </nav>
-  </header>
 
-  <section id="profile" class="reveal">
-    <h1>Welcome to My Portfolio</h1>
-    <p>Hello! I'm passionate about creating innovative solutions and learning new technologies.</p>
-  </section>
+  <!-- Spinner container -->
+  <div class="spinner"></div>
 
-  <section id="skills" class="skills reveal">
-    <h1>My Skills</h1>
-    <div>
-      <img src="py.jpg" alt="Python">
-      <img src="git.png" alt="Git ">
-      <img src="java.jpg" alt="java">
-    </div>
-  </section>
-
-  <section id="projects" class="projects reveal">
-    <h1>My Projects</h1>
-    <div>
-      <img src="analytics.jpg" alt="Project 1">
-      <img src="dl.jpg" alt="Project 2">
-      <img src="https://via.placeholder.com/150" alt="Project 3">
-    </div>
-  </section>
-
-  <section id="certifications" class="certifications reveal">
-    <h1>My Certifications</h1>
-    <div>
-      <img src="ibm.jpg" alt="IBM Data Science Professional Certification">
-        <img src="ibm.jpg" alt="IBM Machine Learning Professional Certificate">
-      <img src="https://via.placeholder.com/150" alt="Certification 3">
-    </div>
-  </section>
-
-  <footer>
-    <p>&copy; 2025 My Portfolio. All rights reserved.</p>
-  </footer>
-
-  <script>
-    // Scroll animation
-    const reveals = document.querySelectorAll('.reveal');
-
-    function revealSections() {
-      reveals.forEach((section) => {
-        const sectionTop = section.getBoundingClientRect().top;
-        const windowHeight = window.innerHeight;
-        if (sectionTop < windowHeight - 100) {
-          section.classList.add('active');
-        } else {
-          section.classList.remove('active');
-        }
-      });
-    }
-
-    window.addEventListener('scroll', revealSections);
-    revealSections(); // Trigger animation on page load
-  </script>
 </body>
 </html>
